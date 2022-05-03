@@ -14,10 +14,10 @@ from pathlib import Path
 import environ
 import os
 
-env = environ.Env(
+# env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
-)
+    # DEBUG=(bool, False)
+# )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,9 +27,11 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'django-insecure-94xe#0on3+fff6wx&t&mo*(7n_a*7y_mbgu=g%x2*^ce5j%mtr'
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -64,7 +66,7 @@ ROOT_URLCONF = 'django_music.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["albums/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,26 +85,26 @@ WSGI_APPLICATION = 'django_music.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
   
-    'default': env.db(),
-    'extra': env.db_url(
-        'SQLITE_URL',
-        default='sqlite:////tmp/my-tmp-sqlite.db'
-    )
-}
+    # 'default': env.db(),
+    # 'extra': env.db_url(
+        # 'SQLITE_URL',
+        #  default='sqlite:////tmp/my-tmp-sqlite.db'
+    # )
+# }
 #consider adding  'db.sqlite3',if needed
 
-CACHES = {
+# CACHES = {
     # Read os.environ['CACHE_URL'] and raises
     # ImproperlyConfigured exception if not found.
     #
     # The cache() method is an alias for cache_url().
-    'default': env.cache(),
+    # 'default': env.cache(),
 
     # read os.environ['REDIS_URL']
-    'redis': env.cache_url('REDIS_URL')
-}
+    # 'redis': env.cache_url('REDIS_URL')
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
