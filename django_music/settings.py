@@ -14,10 +14,10 @@ from pathlib import Path
 import environ
 import os
 
-# env = environ.Env(
+env = environ.Env(
     # set casting, default value
-    # DEBUG=(bool, False)
-# )
+    DEBUG=(bool, False)
+ )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'django_music.wsgi.application'
 
 # DATABASES = {
   
-    # 'default': env.db(),
+    #'default': env.db(),
     # 'extra': env.db_url(
         # 'SQLITE_URL',
         #  default='sqlite:////tmp/my-tmp-sqlite.db'
