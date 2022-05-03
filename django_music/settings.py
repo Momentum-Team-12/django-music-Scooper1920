@@ -27,7 +27,6 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-94xe#0on3+fff6wx&t&mo*(7n_a*7y_mbgu=g%x2*^ce5j%mtr'
 SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
@@ -85,13 +84,8 @@ WSGI_APPLICATION = 'django_music.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    # read os.environ['DATABASE_URL'] and raises
-    # ImproperlyConfigured exception if not found
-    #
-    # The db() method is an alias for db_url().
+  
     'default': env.db(),
-
-    # read os.environ['SQLITE_URL']
     'extra': env.db_url(
         'SQLITE_URL',
         default='sqlite:////tmp/my-tmp-sqlite.db'
