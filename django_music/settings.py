@@ -18,10 +18,10 @@ env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
  )
-
+environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+#environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -45,9 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'albums',
     'django_extensions',
     'debug_toolbar',
+    'albums',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +66,8 @@ ROOT_URLCONF = 'django_music.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["albums/templates/"],
+        'DIRS':os.path.join(BASE_DIR, 'templates'),
+        #'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,26 +86,14 @@ WSGI_APPLICATION = 'django_music.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# DATABASES = {
+DATABASES = {
   
-    #'default': env.db(),
-    # 'extra': env.db_url(
-        # 'SQLITE_URL',
-        #  default='sqlite:////tmp/my-tmp-sqlite.db'
-    # )
-# }
+    'default': env.db(),
+     
+ }
 #consider adding  'db.sqlite3',if needed
 
-# CACHES = {
-    # Read os.environ['CACHE_URL'] and raises
-    # ImproperlyConfigured exception if not found.
-    #
-    # The cache() method is an alias for cache_url().
-    # 'default': env.cache(),
 
-    # read os.environ['REDIS_URL']
-    # 'redis': env.cache_url('REDIS_URL')
-# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
