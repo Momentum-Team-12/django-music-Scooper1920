@@ -8,3 +8,12 @@ def list_albums(request):
     
     return render(request, "albums/list_albums.html",
                   {"albums": albums})
+
+def album_detail(request,pk):
+    album = Album.objects.get(pk=pk)
+    context = {
+        'album':album
+
+    }
+
+    return render(request, 'albums/album_detail.html',context)
