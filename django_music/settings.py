@@ -27,8 +27,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = env('SECRET_KEY')
-SECRET_KEY = 'django-insecure-94xe#0on3+fff6wx&t&mo*(7n_a*7y_mbgu=g%x2*^ce5j%mtr'
+SECRET_KEY = env('SECRET_KEY')
+#SECRET_KEY = 'django-insecure-94xe#0on3+fff6wx&t&mo*(7n_a*7y_mbgu=g%x2*^ce5j%mtr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'django_music.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS':os.path.join(BASE_DIR, 'templates'),
+        'DIRS':[os.path.join(BASE_DIR, 'templates')],
         #'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
